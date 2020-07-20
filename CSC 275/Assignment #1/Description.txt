@@ -1,4 +1,10 @@
-  It is the very distant future, the year 2517. Interstellar travel is now possible and almost every citizen owns a ship. I am the captain, and you are my pilot of the space pirate ship BlackStar. Awakening from stasis sleep at a space station in a low security sector, we get dressed and exit our ship. Before we leave to plunder unknowing travelers passing through dangerous space, our ship needs a few enhancements. We make our way to the engineer post to purchase some ship modifications with the last of our credits. The head engineer sells us on a new weapons system, and improved ballistic shield and, most importantly, an improved cargo hold to hold our looted items. Each looted item is stored in a fixed size box, and we can only fit so many boxes onboard.
+  It is the very distant future, the year 2517. Interstellar travel is now possible and almost every citizen owns a ship.
+  I am the captain, and you are my pilot of the space pirate ship BlackStar. 
+  Awakening from stasis sleep at a space station in a low security sector, we get dressed and exit our ship. 
+  Before we leave to plunder unknowing travelers passing through dangerous space, our ship needs a few enhancements. 
+  We make our way to the engineer post to purchase some ship modifications with the last of our credits. 
+  The head engineer sells us on a new weapons system, and improved ballistic shield and, most importantly, an improved cargo hold to hold our looted items. 
+  Each looted item is stored in a fixed size box, and we can only fit so many boxes onboard.
 
   - We need to create a program that simulates this space world. We will start off by creating a class that meets the following requirements.
   - Our ship can only carry 10 items as adding any more items will not fit in our cargo hold. (Use an array of size 10).
