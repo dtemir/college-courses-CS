@@ -12,7 +12,7 @@ public class Conversion {
 		double pounds = input.nextDouble();
 		// Calculating and assigning the result
 		double killograms = pounds * 0.454;
-		// Output
+	
 		System.out.println(pounds + " pounds is " + killograms + " killograms.");
 		
 	}
