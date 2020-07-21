@@ -1,0 +1,18 @@
+After a few days of plundering unknowing spacecraft, our hull has become weak. 
+After stopping at a nearby space station, we take a look at the damage. 
+The weight of the loot that we have added to the hull has caused stress fractures that could potentially destroy our ship. 
+We decide to sell the contents of our ship to pay for an upgrade to our cargo hold. 
+We make our way to our usual fence, the small green alien named Gweedar. 
+After selling the contents of our cargo hold, we have just enough credits to purchase a new upgrade. 
+We then head to the engineering post. 
+After talking to the head engineer,  he suggests we purchase the Cargo Hold modification. 
+Some of the perks of this upgrade is the special indexing application that comes with it. 
+This application lets us assign attributes of our choosing to each item in the cargo bay. 
+After the modification is installed, we head back out into the void of space to continue our plundering.
+
+- Items now have attributes such as Name, Weight, Value, Durability and ID. (Create an object called ‘Item’)
+- We can carry an unlimited number of items, as long as they don’t exceed the maximum weight of the cargo bay, 25 Tons. (Use an ArrayList that checks an item’s weight before placing it in the cargo hold)
+- We need to be able to add and remove items by their name and attributes.
+- We need to be able to search for a specific type of item in our cargo bay based on the item’s name and one of its attributes (Implement 2 searches – one on name and another on any attribute you choose).
+- We need to be able to sort items by their names alphabetically in descending order (A-Z)
+- We need to know how many of each item we have in our cargo bay and display their attributes.
