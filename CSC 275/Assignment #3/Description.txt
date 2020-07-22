@@ -1,0 +1,17 @@
+While out on a standard run we come across a strange planet that has a ship emitting an SOS beacon.
+We can’t decipher much of their message, but we can tell that they are in trouble because they are on the emergency channel. 
+Once we find the ship, we rescue the survivors and also clear their ship of anything of value – Afterall, us saving them isn’t free! 
+Once the survivors and equipment are on board we talk with them about their messaging system, and they explain that they are using a simple Caesar Cipher to encrypt their messages before they get sent out. 
+With this system they can broadcast their cargo to their friends within listening range, letting them know what they have and that they are willing to trade.
+Being the pirates that we are, we immediately decide that we need to start scanning for these messages so that we can be sure to take down lucrative targets. 
+After interrogating the survivors we also find out that their system is basic, and only uses a single value for the shift, but there are more advanced ships with different technologies. 
+They are outlined here:
+Basic: Using Caesar Cipher with a static shift of 1-25. This is easy to decrypt as there are only 25 possibilities.
+Advanced: They use two different shift values, one for even index characters, and another value for the odd characters.
+- Items now have attributes such as Name, Weight, Value, Durability and ID. (Create an object called ‘Item’)
+- We can carry an unlimited number of items, as long as they don’t exceed the maximum weight of the cargo bay, 25 Tons. (Use an ArrayList that checks an item’s weight before placing it in the cargo hold).
+- We need to be able to add and remove items by their name.
+- We need to be able to search for a specific type of item in our cargo bay based on the item’s name and one of its attributes (Implement 2 searches – one on name and another on any attribute you choose).
+- We need to be able to sort items by their names alphabetically in descending order (A-Z).
+- We need to know how many of each item we have in our cargo bay and display their attributes.
+- We also need to be able to receive a message and decrypt it. The Basic and Advanced versions can print all possibilities to the screen.
