@@ -1,0 +1,13 @@
+While out on a standard run we stop in at our ‘local’ fence and try to sell some of our items. 
+When we board his ship we notice that we are the only people on board, so we instantly start grabbing things and loading them on our ship and get ready to run. 
+While grabbing things we realize that we are going to run out of space extremely quickly and we should prioritize what we grab to maximize our financial gain while staying under our weight limit.
+We don’t have time to figure this out now as Gweedar might come back at any moment and catch us stealing from him – which would result in our instant death.
+- Create an algorithm that maximizes the amount of money we will get if we ever come across this situation again. 
+- We will call this method ‘ransack’ and it should accept a large list of items (manually entered or from a file) and return the optimal list of items we should grab based on our weight limit.
+- Store our items in a file and read from the file if prompted by the user.
+- Items have attributes such as Name, Weight, Value, Durability and ID. (Create an object called ‘Item’)
+- Classify our items by separating them into 3 distinct categories Equipable, Consumable or Weapon.
+- We can carry an unlimited number of items, as long as they don’t exceed the maximum weight of the cargo bay, 25 Tons.
+- The following methods still have the same requirements from the assignment previous to this one: Add, Remove, Search, Sort, Filter, and Display.
+- We need to be able to decode either the basic messages or advanced. Either one obtains full credit.
+- We need to know how many of each item we have in our cargo bay and display their attributes.
