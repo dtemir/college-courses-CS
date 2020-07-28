@@ -1,0 +1,51 @@
+Part 1:
+
+A = {10, 12, 6, 8, 15}
+B = {4, 12, 6, 9, 11}
+
+a.  A ∩ B
+b.  A U B
+c.  A – B
+d.  B – A
+
+Give a short definition and then provide elements for sets A and B and show the results for each of these based upon your data.
+
+Intersection: an operation in which only similar elements are extracted into a different set.
+a. A ∩ B = {12, 6}
+Union: an operation in which all unique elements are extracted into a different set.
+b. A U B = {10, 12, 6, 8, 15, 4, 9, 11}
+Difference is the set of all elements that are in the first set and not in the second set:
+c. A – B = {10, 8, 15}
+d. B – A = {4, 9, 11}
+
+Part 2:
+
+Write the pseudocode that will implement 1a and 1b. Note: sets cannot have duplicate elements
+
+Initialize first set
+Implement values from a file to this set
+Initialize second set
+Implement values from a file to this set
+Declare the longest set as A
+Declare the second set as B
+Initialize a set C
+Sort sets A and B
+For the number of elements in the set A
+	For the number of elements in the set B
+		Compare elements of the set B with the element of the set A
+		If there is a common element, implement this element into the set C
+
+Initialize first set
+Implement values from a file to this set
+Initialize second set
+Implement values from a file to this set
+Declare the longest set as A
+Declare the second set as B
+Initialize a set C
+Sort sets A and B
+For the number of elements in the set A
+	For the number of elements in the set B
+		Compare elements of the set B with the element of the set A
+		If none match, implement the element of the set A into the set C
+Add all elements from the set B to the set C
+
