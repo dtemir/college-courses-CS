@@ -1,0 +1,16 @@
+Part 1:
+
+The bubble sort algorithm is a type of sorting algorithm that is based on comparing two consecutive elements and adjusting their positions by swapping them if they are in the wrong order.
+
+Part 2:
+
+Initialize a variable of the length of the array: n
+  For i = 0 to n - 1
+    For j = 0 to n - i - 1
+      If (a j element from the array > a j + 1 element from the array)
+        Initialize a temporary variable:= the value of an element of j from the array
+        j of the array:= an element of j + 1 from the array
+        j + 1 of the array:= temporary variable
+      End-if
+    End-for
+  End-for
