@@ -1,0 +1,10 @@
+
+Retrieve the string from a user (for example, 2345)
+Initialize an array of the values of the string called input ({2; 3; 4; 5;})
+Initialize an empty array called output ({})
+Initialize a variable n of the length of the array (n = 4)
+For i = 0 to n-1
+  The value of the output array at the position i:= the value of the input array at the position (n - i)
+  ({5; 4; 3; 2}; {2; 3; 4; 5}) 
+End-for
+Return the output array ({5; 4; 3; 2})
