@@ -1,0 +1,37 @@
+1. |P(S)| = 2^4 = 16
+
+2.Initialize an array S  = (a, b, c, d)
+  Initialize a variable powerSetSize of 15 (because i starts at 0)
+  Initialize a variable setSize of 4
+  Initialize an array powerSet of Integer
+  add null to the powerSet (there is always an empty element at the beginning of power sets)
+  For i = 0 to powerSetSize
+    Initialize a variable binaryRep
+  binaryRep:= binary value of i (for example, 0 = 0000; 1 = 0001; 2 = 0010)
+    Initialize a variable temp
+  For j = 1 to 4
+      If index j at binaryRep is equal to 1
+        add the number of index j from S to temp
+      End-if
+    End-for
+    add temp to the powerSet
+  End-for
+  print powerSet
+
+3.Initialize an array S with the n number values
+  Initialize a variable powerSetSize of (2^n - 1)
+  Initialize a variable setSize of n
+  Initialize an array powerSet
+  add null to the powerSet (there is always an empty element at the beginning of power sets)
+  For i = 0 to powerSetSize
+    Initialize a variable binaryRep
+  binaryRep:= binary value of i (for example, 0 = 0000; 1 = 0001; 2 = 0010)
+    Initialize a variable temp
+  For j = 1 to n
+      If index j at binaryRep is equal to 1
+        add the element of index j from S to temp
+      End-if
+    End-for
+    add temp to the powerSet
+  End-for
+print powerSet
