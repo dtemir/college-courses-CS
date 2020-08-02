@@ -1,0 +1,22 @@
+Initialize a variable count of a zero value
+Initialize a variable sumBefore, sumAfter of a zero value
+Initialize a variable current, currentIncreased of a zero value
+Initialize a variable averageSumBefore, averageSumAfter of a zero value
+For i = 0 to n
+	current:= input value
+	sumBefore:= sumBefore + current
+	If (current < 50000) 
+		currentIncreased:= current * 1.05
+		sumAfter:= sumAfter + currentIncreased
+	Else
+		currentIncreased:= current * 1.04
+		sumAfter:= sumAfter + currentIncreased
+	End-if
+	count:= count + 1
+End-for
+averageSumBefore:= sumBefore / count
+averageSumAfter:= sumAfter / count
+print sumBefore, sumAfter
+print averageSumBefore, averageSumAfter
+print count
+print (sumAfter – sumBefore), (averageSumAfter – averageSumBefore)
