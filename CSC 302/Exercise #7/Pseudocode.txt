@@ -1,0 +1,26 @@
+1.      Mathematics
+      /             \
+   Computers       Spanish
+       \               \
+     Geography      Zoology
+
+2.Initialize a variable value of the input value (first would be the word “mathematics”)
+  Initialize variables root, rootLeft, rootRight
+  If root has no value (since it will be empty for the first time, “mathematics” becomes root)
+    root is equal to value
+    return for the next input
+  End-if
+    If root is after value in alphabetical order (e.g., “computers” is before “mathematics”)
+    If rootLeft has no value (null) (since it will be empty for the first time, “computers”)
+      rootLeft is equal to value
+      return for the next input
+    End-if
+    Substitute root with rootLeft and run again (using the same value but different root)
+  End-if
+  If root is before value in alphabetical order (e.g., “Spanish” is after “mathematics”)
+    If rootRight has no value (null) (since it will be empty for the first time, “Spanish”)
+      rootRight is equal to value
+      return for the next input
+    End-if
+    Substitute root with rootRight and run again (using the same value but different root)
+  End-if
