@@ -1,4 +1,4 @@
-"""This is implementation of the Exercise 4"""
+"""This is an implementation of the Exercise 4"""
 string_list = list(input())  # Convert user input to a list
 
 string_output = []  # Create a list for storing the reversed list
