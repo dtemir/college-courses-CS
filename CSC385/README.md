@@ -5,14 +5,15 @@
 **Problem Definition:**
 
 Problem: Given an array of integers, find all pairs of integers, a and b, where a – b is equal to a given number.
-For example, consider the following array and suppose we want to find all pairs of integers a and b where a – b = 3
+For example, consider the following array and suppose we want to find all pairs of integers a and b where a – b = 3.
+
 A = [10, 4, 6, 16, 1, 6, 12, 13]
 
 Then your method should return the following pairs:
 
-	* 4, 1
-	* 16, 13
-	* 13, 10 
+	4, 1
+	16, 13
+	13, 10 
 
 **Problem Solution:**
 
