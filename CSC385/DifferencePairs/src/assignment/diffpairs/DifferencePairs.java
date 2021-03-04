@@ -58,46 +58,54 @@ public class DifferencePairs {
 
 	public static Pair[] findPairs(int array[], int diff) {
 		/*
-		 * Finding pairs of elements in the array whose subtraction is equal to the diff
-		 * The algorithm uses two pointers: first for keeping the starting element,
-		 * second for keeping the current element
-		 * The algorithm uses sorting to skip over elements that have 
-		 * already been used as the starting element, skipping over the large portions 
+		 * Finding pairs of elements in the array whose subtraction is equal to diff.
+		 * The method first sorts the array.
+		 * The method then uses two pointers to traverse the array based on their difference.
+		 * If difference is lower than the required value, second pointer progresses.
+		 * If difference is higher than the required value, first pointer progresses.
+		 * If difference is the one required, both pointers progress. 
 		 */
 		array = sort(array); // sort the array
 		ArrayUtils.printIntegerArray(array); // check if it's sorted
 		
-		if (array.length <= 1) {
+		if (array.length <= 1) { // corner case
 			return null;
 		}
 		
-		int start = 0; // first pointer for the base element
-		int current = 1; // second pointer for traversing the rest of the array
-		int prev = array[start]; // storing the previous elements to not check the same element 
+		Pair[] temp_pairs = new Pair[array.length]; // temporary array for storing all pairs
 		
-		while (start < array.length) { // iterate the whole array O(n)
-			
-			while (current < array.length) { // iterate the smaller part of the array O(logn)
-				// System.out.println(start + " " + current);
-				int difference = array[current] - array[start];
-				if (difference == diff) {
-					System.out.println("Pair found " + array[start] + " " + array[current]);
-					break;
-				}
-				current++;
+		int first = 0; // first pointer
+		int second = 1; // second pointer
+		int num_pairs = 0; // number of pairs
+		
+		while (first < array.length ) {
+			int difference = array[second] - array[first];
+			// if needed diff is found, create a pair and increment both pointers
+			if (difference == diff) {
+				Pair pair = new Pair(array[first++], array[second++]);
+				temp_pairs[num_pairs++] = pair;
 			}
-			prev = array[start];
-			start++;
-			current = start + 1;
-			
-			while ((start < array.length) && (array[start] == prev)) {
-				start++;
-				current++;
+			// if needed diff is bigger, progress second pointer
+			if (difference < diff) {
+				second++;
+			// if needed diff is smaller, progress first pointer
+			} else if (difference > diff) {
+				first++;
 			}
-			
+						
+			// check for ArrayOutOfBounds 
+			if ((second >= array.length) || (first >= array.length)) {
+				break;
+			}
 		}
 		
-		return null;
+		// Initialize and declare a new array of the required length
+		Pair[] pairs = new Pair[num_pairs];
+		for (int i = 0; i < num_pairs; i++) {
+			pairs[i] = temp_pairs[i];
+		}
+		
+		return pairs;
 	}
 
 }
