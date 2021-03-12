@@ -108,3 +108,50 @@ If the move has not been taken, add it to the stack and shift current to point t
 
 Another key moment is to check that you put the extracted node back in the stack when backtracking
 because if you find the right path, this element will be missing since you popped out of the stack.
+
+## Week 7 
+
+<details> 
+
+
+In [**List**](https://github.com/dtemir/college-courses-CS/blob/master/CSC385/List)
+we built a *Doubly Linked List* Data Structure. 
+We wrote methods like *insert*, *remove*, *set*, *etc.*
+
+    public static void main(String[] args) {
+
+		DoublyLinkedList<Integer> dll = new DoublyLinkedList<Integer>();
+
+		for (int i = 0; i < 10; i++) {
+			dll.insert(i, (i + 1) * 10);
+		}
+
+		dll.insert(0, 200);
+		dll.insert(5, 500);
+		dll.insert(2, 600);
+		System.out.println(dll);
+
+		dll.removeAt(0);
+		System.out.println(dll);
+
+		dll.removeAt(dll.getSize() - 1);
+		System.out.println(dll);
+
+		dll.removeAt(3);
+		System.out.println(dll);
+
+		dll.removeAt(7);
+
+		System.out.println(dll);
+	}    
+
+    [Out]
+    [200, 10, 600, 20, 30, 40, 500, 50, 60, 70, 80, 90, 100]
+    [10, 600, 20, 30, 40, 500, 50, 60, 70, 80, 90, 100]
+    [10, 600, 20, 30, 40, 500, 50, 60, 70, 80, 90]
+    [10, 600, 20, 40, 500, 50, 60, 70, 80, 90]
+    [10, 600, 20, 40, 500, 50, 60, 80, 90]
+
+
+
+</details>
