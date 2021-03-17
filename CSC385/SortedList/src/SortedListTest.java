@@ -14,7 +14,6 @@ public class SortedListTest {
 			int number = rand.nextInt(41) - 20;
 			numbers[i] = number;
 			s1.add(number); // random values between -20 and 20
-			System.out.println(s1);
 		}
 		System.out.println("\nAdding " + Arrays.toString(numbers));
 		System.out.println("List: " + s1);
@@ -156,22 +155,52 @@ public class SortedListTest {
 					.println("Did not throw the correct exception.  Exception " + e.getClass().getName() + " thrown.");
 		}
 
-		System.out.println("\n******TESTING REMOVEALL*******");
+		System.out.println("\n******TESTING REMOVEALL (INTEGERS)*******");
 
-		SortedList<Character> s3 = new SortedList<Character>();
-		SortedList<Character> s4 = new SortedList<Character>();
+		SortedList<Integer> s3 = new SortedList<Integer>();
+		SortedList<Integer> s4 = new SortedList<Integer>();
 
 		for (int i = 1; i <= 10; i++) {
-			s3.add(alpha[rand.nextInt(alpha.length)]);
+			s3.add(rand.nextInt(10));
 		}
 
 		for (int i = 1; i <= rand.nextInt(15) + 1; i++) {
-			s4.add(alpha[rand.nextInt(alpha.length)]);
+			s4.add(rand.nextInt(10));
 		}
 
 		System.out.println("Using lists \n\tlist1=" + s3 + "\n\tlist2=" + s4);
 		s3.removeAll(s4);
 		System.out.println("\nlist1.removeAll(list2)\n\tlist1=" + s3 + "\n\tlist2=" + s4);
+		
+		SortedList<Character> s5 = new SortedList<Character>();
+		SortedList<Character> s6 = new SortedList<Character>();
 
-	}
+		System.out.println("\n******TESTING REMOVEALL (CHARS)*******");		
+
+		for (int i = 1; i <= 10; i++) {
+			s5.add(alpha[rand.nextInt(alpha.length)]);
+		}
+
+		for (int i = 1; i <= rand.nextInt(15) + 1; i++) {
+			s6.add(alpha[rand.nextInt(alpha.length)]);
+		}
+
+		System.out.println("Using lists \n\tlist1=" + s5 + "\n\tlist2=" + s6);
+		s5.removeAll(s6);
+		System.out.println("\nlist1.removeAll(list2)\n\tlist1=" + s5 + "\n\tlist2=" + s6);
+
+		
+		SortedList<Integer> s7 = new SortedList<Integer>();
+		s7.add(2);
+		s7.add(2);
+		s7.add(2);
+		s7.add(9);
+		s7.add(9);
+		SortedList<Integer> s8 = new SortedList<Integer>();
+		s8.add(2);
+		s8.add(9);
+		System.out.println("Using lists \n\tlist1=" + s7 + "\n\tlist2=" + s8);
+		s7.removeAll(s8);
+		System.out.println("\nlist1.removeAll(list2)\n\tlist1=" + s7 + "\n\tlist2=" + s8);
+ 	}
 }

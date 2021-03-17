@@ -1,5 +1,18 @@
 
 public class SortedList<T extends Comparable<? super T>> {
+	
+	/**
+	 * Node class
+	 */
+	private class Node {
+		private T data;
+		private Node next;
+		private Node prev;
+
+		public Node(T data) {
+			this.data = data;
+		}
+	}
 
 	// Fields
 	private Node head;
@@ -236,53 +249,81 @@ public class SortedList<T extends Comparable<? super T>> {
 		Node temp1 = head;
 		Node temp2 = otherList.head;
 		
-		while (temp1 != null && temp2 != null) {
-			System.out.println("Comparing list1 " + temp1.data + " with list2 " + temp2.data);
+		// Iterate unless one of the current nodes' next is null		
+		while (temp1.next != null && temp2.next != null) {
+			// CASE 0: The current list item is equal to the otherList item
 			if (temp1.data.compareTo(temp2.data) == 0) {
-				System.out.println(" case 0");
-				while (temp1.data.compareTo(temp2.data) == 0) {
-					removeNode(temp1);
+				// Remove all nodes from the current list that are equal to the otherList item
+				while (temp1.data.compareTo(temp2.data) == 0 && temp1.next != null) {
+					System.out.println("Comparing " + temp1.data + " against " + temp2.data);
+					removeNode(temp1); // Remove node from the list
+					if (temp1 == head) { // Change head if the current node is the head
+						head = temp1.next;
+					}
+					if (temp1 == tail) {
+						tail = temp1.prev;
+					}
 					temp1 = temp1.next;
+					System.out.println("now " + temp1.data);
+					removeRef(temp1.prev); // Remove node from the memory (change to null)
 				}
 				temp2 = temp2.next;
+				System.out.println("now " + temp2.data);
+			// CASE 1: The current list item is less than the otherList item
 			} else if (temp1.data.compareTo(temp2.data) < 0){
-				System.out.println(" case 1");
-				while (temp1.data.compareTo(temp2.data) < 0) {
+				// Shift the current node until it is bigger or equal to the otherList item
+				while (temp1.data.compareTo(temp2.data) < 0 && temp1.next != null) {
 					temp1 = temp1.next;
 				}
+			// CASE 2: The current list item is bigger than the otherList item
 			} else {
-				System.out.println(" case 2");
-				while (temp1.data.compareTo(temp2.data) > 0) {
+				// Shift the otherList item until it is bigger or equal to the current list item
+				while (temp1.data.compareTo(temp2.data) > 0 && temp2.next != null) {
 					temp2 = temp2.next;
 				}
 			}
 		}
 		
+		while (temp1.data.compareTo(temp2.data) == 0 && temp1.next != null) {
+			System.out.println("Comparing " + temp1.data + " against " + temp2.data);
+			removeNode(temp1); // Remove node from the list
+			if (temp1 == tail) {
+				tail = temp1.prev;
+			}
+			temp1 = temp1.next;
+			System.out.println("now " + temp1.data);
+			removeRef(temp1.prev); // Remove node from the memory (change to null)
+		}
+		
 	}
-
+	
+	/**
+	 * Removes given node from the chain
+	 * (It does not remove the node, it just modifies the chain)
+	 * 
+	 * @param node
+	 */
 	private void removeNode(Node node) {
 		if (node.prev != null && node.next != null) {
-			System.out.println("Case 1 with letter " + node.data);
 			node.prev.next = node.next;
 			node.next.prev = node.prev;
-			node.next = null;
-			node.prev = null;
-			System.out.println("Successfully removed, Case 1");
 		} else if (node.prev == null) {
-			System.out.println("Case 2 with letter " + node.data);
 			node.next.prev = null;
-			node.next = null;
-			node.prev = null;
-			System.out.println("Successfully removed, Case 2");
 		} else if (node.next == null) {
-			System.out.println("Case 3 with letter " + node.data);
 			node.prev.next = null;
-			node.next = null;
-			node.prev = null;
-			System.out.println("Successfully removed, Case 3");
 		}
 	}
-
+	
+	/**
+	 * Removes given node from the memory
+	 * as it still points to its next and prev node
+	 * 
+	 * @param node
+	 */
+	private void removeRef(Node node){
+		node = null;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
@@ -304,18 +345,5 @@ public class SortedList<T extends Comparable<? super T>> {
 		sb.append("]");
 
 		return sb.toString();
-	}
-
-	/**
-	 * Node class
-	 */
-	private class Node {
-		private T data;
-		private Node next;
-		private Node prev;
-
-		public Node(T data) {
-			this.data = data;
-		}
 	}
 }
