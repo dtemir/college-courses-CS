@@ -171,11 +171,11 @@ public class SortedListTest {
 		System.out.println("Using lists \n\tlist1=" + s3 + "\n\tlist2=" + s4);
 		s3.removeAll(s4);
 		System.out.println("\nlist1.removeAll(list2)\n\tlist1=" + s3 + "\n\tlist2=" + s4);
-		
+
 		SortedList<Character> s5 = new SortedList<Character>();
 		SortedList<Character> s6 = new SortedList<Character>();
 
-		System.out.println("\n******TESTING REMOVEALL (CHARS)*******");		
+		System.out.println("\n******TESTING REMOVEALL (CHARS)*******");
 
 		for (int i = 1; i <= 10; i++) {
 			s5.add(alpha[rand.nextInt(alpha.length)]);
@@ -189,7 +189,8 @@ public class SortedListTest {
 		s5.removeAll(s6);
 		System.out.println("\nlist1.removeAll(list2)\n\tlist1=" + s5 + "\n\tlist2=" + s6);
 
-		
+		System.out.println("\n******TESTING REMOVEALL (CORNER CASES)*******");
+
 		SortedList<Integer> s7 = new SortedList<Integer>();
 		s7.add(2);
 		s7.add(2);
@@ -202,5 +203,17 @@ public class SortedListTest {
 		System.out.println("Using lists \n\tlist1=" + s7 + "\n\tlist2=" + s8);
 		s7.removeAll(s8);
 		System.out.println("\nlist1.removeAll(list2)\n\tlist1=" + s7 + "\n\tlist2=" + s8);
- 	}
+
+		System.out.println();
+
+		SortedList<Integer> s9 = new SortedList<Integer>();
+		s9.add(1);
+		s9.add(2);
+		s9.add(3);
+		s9.add(4);
+		System.out.println("Using lists \n\tlist1=" + s9 + "\n\tlist1=" + s9);
+		s9.removeAll(s9);
+		System.out.println("\nlist1.removeAll(list2)\n\tlist1=" + s9 + "\n\tlist1=" + s9);
+
+	}
 }

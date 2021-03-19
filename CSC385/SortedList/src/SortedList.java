@@ -1,6 +1,12 @@
 
 public class SortedList<T extends Comparable<? super T>> {
 	
+	// Fields
+	private Node head;
+	private Node tail;
+
+	private int size;
+	
 	/**
 	 * Node class
 	 */
@@ -14,21 +20,13 @@ public class SortedList<T extends Comparable<? super T>> {
 		}
 	}
 
-	// Fields
-	private Node head;
-	private Node tail;
-
-	private int size;
-
 	// Constructor
 	public SortedList() {
 		clear();
 	}
 
 	/**
-	 * Returns True if list is empty, False if not
-	 * 
-	 * @return
+	 * Returns true if list is empty, false if not
 	 */
 	public boolean isEmpty() {
 		return (size == 0);
@@ -44,7 +42,7 @@ public class SortedList<T extends Comparable<? super T>> {
 	}
 
 	/**
-	 * Returns size
+	 * Gets the size of the list
 	 * 
 	 * @return size
 	 */
@@ -60,31 +58,23 @@ public class SortedList<T extends Comparable<? super T>> {
 	public void add(T data) {
 		Node newNode = new Node(data);
 		if (isEmpty()) { // Adding to an empty list
-//			 System.out.println("	Empty, so we add " + newNode.data);
 			head = newNode;
 			tail = head;
 		} else { // Adding to a non-empty list
 			Node temp = head;
-
 			// Traverse until finding the place or getting to the end
 			while (temp.next != null) {
-//				 System.out.println("	Data to be added: " + data);
 				// if temp's data is lower than data's, keep moving
 				if (temp.data.compareTo(data) <= 0) {
-//					 System.out.println("	" + temp.data + " is less than " + data + " because " + temp.data.compareTo(data));
-//					 System.out.println("	Proceeding forward");
 					temp = temp.next;
-				// if temp's data is higher than data's, stop
+				// if temp's data is higher than data, stop
 				} else {
-//					System.out
-//							.println("	" + temp.data + " is greater than " + data + " because " + temp.data.compareTo(data));
 					break;
 				}
 			}
 
 			// Case 0: There is ONE node in the list
 			if (temp.prev == null && temp.next == null) {
-//				System.out.println("Case 0");
 				// Current node is less than the new node
 				if (temp.data.compareTo(data) <= 0) {
 					temp.next = newNode;
@@ -98,7 +88,6 @@ public class SortedList<T extends Comparable<? super T>> {
 				}
 			// Case 1: The current node is at the end
 			} else if (temp.next == null) {
-//				System.out.println("Case 1");
 				// Current node is less than the new node
 				if (temp.data.compareTo(data) <= 0) {
 					newNode.prev = temp;
@@ -113,13 +102,11 @@ public class SortedList<T extends Comparable<? super T>> {
 				}
 			// Case 2: The current node is at the start
 			} else if (temp.prev == null) {
-//				System.out.println("Case 2");
 				newNode.next = temp;
 				temp.prev = newNode;
 				head = newNode;
 			// Case 3: The current node is somewhere in the middle
 			} else {
-//				System.out.println("Case 3");
 				newNode.next = temp;
 				newNode.prev = temp.prev;
 				temp.prev.next = newNode;
@@ -131,7 +118,7 @@ public class SortedList<T extends Comparable<? super T>> {
 	}
 	
 	/**
-	 * Removes an item from a given index
+	 * Removes the item from a given index
 	 * 
 	 * @param index
 	 * @return Node.data
@@ -202,7 +189,7 @@ public class SortedList<T extends Comparable<? super T>> {
 		}
 
 		Node temp;
-		// decide to traverse from head or tail (doubly linked list)
+		// Decide to traverse from head or tail (doubly linked list)
 		if (index < size / 2) {
 			temp = head;
 			for (int i = 0; i < index; i++) {
@@ -227,11 +214,23 @@ public class SortedList<T extends Comparable<? super T>> {
 	public boolean contains(T data) {
 		boolean found = false;
 		Node temp = head;
-
+		
+		// if data is at the head or tail, it is found
+		if (head.data.equals(data) || tail.data.equals(data)) {
+			return true;
+		// if data is below the head's data or above the tail's data, no such item
+		} else if (head.data.compareTo(data) > 0 || tail.data.compareTo(data) < 0) {
+			return false;
+		}
+		
+		// traverse the array until the item is found
 		while (temp != null) {
 			if (temp.data.equals(data)) {
 				found = true;
 				break;
+			// if temp's data is bigger than data, it is not in the list
+			} else if (temp.data.compareTo(data) > 0) {
+				return false;
 			}
 			temp = temp.next;
 		}
@@ -249,52 +248,39 @@ public class SortedList<T extends Comparable<? super T>> {
 		Node temp1 = head;
 		Node temp2 = otherList.head;
 		
-		// Iterate unless one of the current nodes' next is null		
-		while (temp1.next != null && temp2.next != null) {
+		// Iterate until one of the nodes next is null		
+		while (temp1 != null && temp2 != null) {
 			// CASE 0: The current list item is equal to the otherList item
 			if (temp1.data.compareTo(temp2.data) == 0) {
 				// Remove all nodes from the current list that are equal to the otherList item
-				while (temp1.data.compareTo(temp2.data) == 0 && temp1.next != null) {
-					System.out.println("Comparing " + temp1.data + " against " + temp2.data);
+				while (temp1 != null && temp2 != null && temp1.data.compareTo(temp2.data) == 0) {
 					removeNode(temp1); // Remove node from the list
 					if (temp1 == head) { // Change head if the current node is the head
 						head = temp1.next;
 					}
-					if (temp1 == tail) {
+					if (temp1 == tail) { // Change tail if the current node is the tail
 						tail = temp1.prev;
 					}
 					temp1 = temp1.next;
-					System.out.println("now " + temp1.data);
-					removeRef(temp1.prev); // Remove node from the memory (change to null)
+					if (temp1 != null) {
+						removeRef(temp1.prev); // Remove node from the memory (change to null)
+					}
 				}
 				temp2 = temp2.next;
-				System.out.println("now " + temp2.data);
 			// CASE 1: The current list item is less than the otherList item
 			} else if (temp1.data.compareTo(temp2.data) < 0){
 				// Shift the current node until it is bigger or equal to the otherList item
-				while (temp1.data.compareTo(temp2.data) < 0 && temp1.next != null) {
+				while (temp1 != null && temp2!= null && temp1.data.compareTo(temp2.data) < 0) {
 					temp1 = temp1.next;
 				}
 			// CASE 2: The current list item is bigger than the otherList item
 			} else {
 				// Shift the otherList item until it is bigger or equal to the current list item
-				while (temp1.data.compareTo(temp2.data) > 0 && temp2.next != null) {
+				while (temp1 != null && temp2 != null && temp1.data.compareTo(temp2.data) > 0) {
 					temp2 = temp2.next;
 				}
 			}
 		}
-		
-		while (temp1.data.compareTo(temp2.data) == 0 && temp1.next != null) {
-			System.out.println("Comparing " + temp1.data + " against " + temp2.data);
-			removeNode(temp1); // Remove node from the list
-			if (temp1 == tail) {
-				tail = temp1.prev;
-			}
-			temp1 = temp1.next;
-			System.out.println("now " + temp1.data);
-			removeRef(temp1.prev); // Remove node from the memory (change to null)
-		}
-		
 	}
 	
 	/**
@@ -304,12 +290,15 @@ public class SortedList<T extends Comparable<? super T>> {
 	 * @param node
 	 */
 	private void removeNode(Node node) {
+		// CASE 0: Node is in the middle of the list
 		if (node.prev != null && node.next != null) {
 			node.prev.next = node.next;
 			node.next.prev = node.prev;
-		} else if (node.prev == null) {
+		// CASE 1: Node is at the start of the list
+		} else if (node.prev == null && node.next != null) {
 			node.next.prev = null;
-		} else if (node.next == null) {
+		// CASE 2: Node is at the end of the list
+		} else if (node.next == null && node.prev != null) {
 			node.prev.next = null;
 		}
 	}
