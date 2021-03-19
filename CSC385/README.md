@@ -1,8 +1,8 @@
 # CSC 385
 
-- [Week 5 - Sorting Assignment](#week-5---sorting-assignment---difference-pairshttpsgithubcomdtemircollege-courses-cstreemastercsc385differencepairs)
-- [Week 6 - Stack Assignment](#week-6---stack-assignment---maze-solvinghttpsgithubcomdtemircollege-courses-cstreemastercsc385mazesolving)
-- [Week 7 - Sorted List Assignment](#week-7---sorted-list-assignment---sorted-listhttpsgithubcomdtemircollege-courses-cstreemastercsc385sortedlist)
+- [Week 5 - Sorting Assignment](#week-5---sorting-assignment---difference-pairs)
+- [Week 6 - Stack Assignment](#week-6---stack-assignment---maze-solving)
+- [Week 7 - Sorted List Assignment](#week-7---sorted-list-assignment---sorted-list)
 
 ## Week 5 - Sorting Assignment - [Difference Pairs](https://github.com/dtemir/college-courses-CS/tree/master/CSC385/DifferencePairs)
 
