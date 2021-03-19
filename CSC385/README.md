@@ -1,10 +1,14 @@
 # CSC 385
 
+- [Week 5 - Sorting Assignment](#week-5---sorting-assignment---difference-pairshttpsgithubcomdtemircollege-courses-cstreemastercsc385differencepairs)
+- [Week 6 - Stack Assignment](#week-6---stack-assignment---maze-solvinghttpsgithubcomdtemircollege-courses-cstreemastercsc385mazesolving)
+- [Week 7 - Sorted List Assignment](#week-7---sorted-list-assignment---sorted-listhttpsgithubcomdtemircollege-courses-cstreemastercsc385sortedlist)
+
 ## Week 5 - Sorting Assignment - [Difference Pairs](https://github.com/dtemir/college-courses-CS/tree/master/CSC385/DifferencePairs)
 
 **Problem Definition:**
 
-Problem: Given an array of integers, find all pairs of integers, a and b, where a – b is equal to a given number.
+Given an array of integers, find all pairs of integers, a and b, where a – b is equal to a given number.
 For example, consider the following array and suppose we want to find all pairs of integers a and b where a – b = 3.
 
 A = [10, 4, 6, 16, 1, 6, 12, 13]
@@ -29,7 +33,7 @@ Since the most complex part of the solution is sorting the array with merge sort
 
 **Problem Definition:**
 
-Problem: Consider a maze made up of rectangular array of squares, such as the following one:
+Consider a maze made up of rectangular array of squares, such as the following one:
 
 <table>
 
@@ -109,10 +113,147 @@ If the move has not been taken, add it to the stack and shift current to point t
 Another key moment is to check that you put the extracted node back in the stack when backtracking
 because if you find the right path, this element will be missing since you popped out of the stack.
 
-## Week 7 
+## Week 7 - Sorted List Assignment - [Sorted List](https://github.com/dtemir/college-courses-CS/tree/master/CSC385/SortedList)
 
-<details> 
+**Problem Definition:** 
 
+Implement a linked list that remains sorted. 
+The linked list should be able to story any object if the object has implemented the Comparable interface.
+
+    pubic class SortedLinkedList<T extends Comparable<? super T>>
+
+The list should be kept in ascending order. 
+The following methods must be implemented:
+* **clear** - Should reset the list to be empty.
+* **getSize** - Returns the size of the list.
+* **toString** - Returns a string representation of the list.
+* **add** - Adds a new object to the list in its sorted position.
+* **removeAt** - Removes an item from a given index.
+* **get** - Returns the item from a given position.
+* **contains** - Checks if a value exists.
+* **removeAll** - Takes another SortedList and removes its elements from the list.
+
+**Problem Solution:**
+
+See [*SortedList.java*](https://github.com/dtemir/college-courses-CS/blob/master/CSC385/SortedList/src/SortedList.java).
+The most complicated methods were **add** and **removeAll** because they required a lot of work with pointers.
+To add in ascending order, we must consider four cases: 
+1. When there are no elements in the list.
+2. When there is **one** node in the list.
+3. When we add the new node to **the end** of the list.
+4. When we add the new node to **the start** of the list.
+
+To remove all elements of one list from the current list, we must consider three cases:
+1. When the current list item is **equal** to the other list item.
+2. When the current list item is **less** than the other list item.
+3. When the current list item is **bigger** than the other list item.
+
+<details> <summary>Testing Code</summary>
+
+    *****TESTING TOSTRING WITH INTEGERS*********
+
+    Adding [-19, -14, -7, 14, 5, -1, 0, -5, 19, 20]
+    List: [-19, -14, -7, -5, -1, 0, 5, 14, 19, 20]
+    
+    Adding more numbers to same list
+    
+    Added [5, 12, -18, 2]
+    List: [-19, -18, -14, -7, -5, -1, 0, 2, 5, 5, 12, 14, 19, 20]
+    
+    The above list prints should show a sorted list.
+    
+    ******TESTING TOSTRING WITH CHARACTERS*******
+    
+    Added [f, j, k, d, v, l, n, l, k, d]
+    List: [d, d, f, j, k, k, l, l, n, v]
+    
+    The above list should be a sorted list of characters
+
+    ******TESTING CONTAINS*******
+    List: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+    
+    Does the list have 6?	true
+    Does the list have 20?	true
+    Does the list have -10?	false
+    Does the list have 3?	false
+    
+    Should be 
+    true
+    true
+    false
+    false
+    
+    *******TESTING GET METHOD********
+    
+    Using list: [0, 1, 3, 3, 6, 7, 8, 14, 16, 19]
+    Getting element at position 7: 14
+    
+    Testing out of bounds index positive value.
+    Threw an IndexOutOfBoundsException.  Pass.
+    
+    Testing out of bounds index negative value.
+    Threw an IndexOutOfBoundsException.  Pass.
+    
+    Testing EmptyCollectionException.
+    Threw EmptyCollectionException. Pass.
+    
+    *******TESTING REMOVEAT********
+    
+    Using list: [5, 9, 10, 13, 13, 14, 14, 14, 15, 19]
+    
+    Remove element at position 3: [5, 9, 10, 13, 14, 14, 14, 15, 19]
+    
+    Remove element at position 0: [9, 10, 13, 14, 14, 14, 15, 19]
+    
+    Remove element at position size - 1: [9, 10, 13, 14, 14, 14, 15]
+    
+    Testing out of bounds index positive value.
+    Threw an IndexOutOfBoundsException.  Pass.
+    
+    Testing out of bounds index negative value.
+    Threw an IndexOutOfBoundsException.  Pass.
+    
+    Testing EmptyCollectionException.
+    Threw EmptyCollectionException. Pass.
+    
+    ******TESTING REMOVEALL (INTEGERS)*******
+    Using lists 
+        list1=[0, 1, 2, 3, 4, 5, 5, 6, 8, 9]
+        list2=[0, 2, 4, 7, 9]
+    
+    list1.removeAll(list2)
+        list1=[1, 3, 5, 5, 6, 8]
+        list2=[0, 2, 4, 7, 9]
+    
+    ******TESTING REMOVEALL (CHARS)*******
+    Using lists 
+        list1=[a, a, n, p, p, p, p, t, t, z]
+        list2=[e, e, h, i, v, x]
+    
+    list1.removeAll(list2)
+        list1=[a, a, n, p, p, p, p, t, t, z]
+        list2=[e, e, h, i, v, x]
+    
+    ******TESTING REMOVEALL (CORNER CASES)*******
+    Using lists 
+        list1=[2, 2, 2, 9, 9]
+        list2=[2, 9]
+    
+    list1.removeAll(list2)
+        list1=[]
+        list2=[2, 9]
+    
+    Using lists 
+        list1=[1, 2, 3, 4]
+        list1=[1, 2, 3, 4]
+    
+    list1.removeAll(list2)
+        list1=[]
+        list1=[]
+
+</details>
+
+<details> <summary>Lab Material</summary>
 
 In [**List**](https://github.com/dtemir/college-courses-CS/blob/master/CSC385/List)
 we built a *Doubly Linked List* Data Structure. 
@@ -151,7 +292,5 @@ We wrote methods like *insert*, *remove*, *set*, *etc.*
     [10, 600, 20, 30, 40, 500, 50, 60, 70, 80, 90]
     [10, 600, 20, 40, 500, 50, 60, 70, 80, 90]
     [10, 600, 20, 40, 500, 50, 60, 80, 90]
-
-
 
 </details>
