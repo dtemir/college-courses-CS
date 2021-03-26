@@ -294,3 +294,40 @@ We wrote methods like *insert*, *remove*, *set*, *etc.*
     [10, 600, 20, 40, 500, 50, 60, 80, 90]
 
 </details>
+
+## Week 8 - Binary Trees
+
+<details> <summary>Lab Material</summary>
+
+In [**BinaryTree**](https://github.com/dtemir/college-courses-CS/blob/master/CSC385/BinaryTree)
+we built a *Binary Tree* Data Structure.
+We wrote methods like *add*, *remove*, *levelOrderString*, and *postOrderString.*
+
+	public static void main(String[] args) {
+		
+		BinaryTree<String> bt = new BinaryTree<>();
+		
+		bt.add("A");
+		bt.add("B");
+		bt.add("C");
+		bt.add("D");
+		bt.add("E");
+		bt.add("F");
+		
+		System.out.println(bt);
+		
+		bt.remove("A");
+
+		System.out.println(bt);
+		
+		bt.remove("F");
+		
+		System.out.println(bt);
+
+	}
+
+	{ A B C D E F }
+	{ F B C D E }
+	{ E B C D }
+
+</details>
