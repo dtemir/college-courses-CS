@@ -306,6 +306,8 @@ We wrote methods like *add*, *remove*, *levelOrderString*, and *postOrderString.
 	public static void main(String[] args) {
 		
 		BinaryTree<String> bt = new BinaryTree<>();
+
+		System.out.println("Height of the tree is " + bt.getHeight());
 		
 		bt.add("A");
 		bt.add("B");
@@ -326,6 +328,7 @@ We wrote methods like *add*, *remove*, *levelOrderString*, and *postOrderString.
 
 	}
 
+	Height of the tree is 2
 	{ A B C D E F }
 	{ F B C D E }
 	{ E B C D }
