@@ -167,6 +167,21 @@ public class BinaryTree<T> {
 		return null;
 	}
 	
+	public int getHeight() {
+		return getHeight(root) -1;
+	}
+	
+	public int getHeight(Node current) {
+		if (current == null) {
+			return 0;
+		}
+		
+		int leftHeight = getHeight(current.left) + 1;
+		int rightHeight = getHeight(current.right) + 1;
+		
+		return Math.max(leftHeight, rightHeight);
+	}
+	
 	public String levelOrderString() {
 		StringBuffer sb = new StringBuffer();
 		

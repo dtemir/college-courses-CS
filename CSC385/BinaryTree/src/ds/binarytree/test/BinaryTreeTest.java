@@ -15,6 +15,8 @@ public class BinaryTreeTest {
 		bt.add("E");
 		bt.add("F");
 		
+		System.out.println("Height of the tree is " + bt.getHeight());
+		
 		System.out.println(bt);
 		
 		bt.remove("A");
