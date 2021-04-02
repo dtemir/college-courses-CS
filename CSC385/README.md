@@ -301,7 +301,7 @@ We wrote methods like *insert*, *remove*, *set*, *etc.*
 
 In [**BinaryTree**](https://github.com/dtemir/college-courses-CS/blob/master/CSC385/BinaryTree)
 we built a *Binary Tree* Data Structure.
-We wrote methods like *add*, *remove*, *levelOrderString*, and *postOrderString.*
+We wrote methods like *add*, *remove*, *levelOrderString*, and *postOrderString*.
 
 	public static void main(String[] args) {
 		
@@ -332,5 +332,51 @@ We wrote methods like *add*, *remove*, *levelOrderString*, and *postOrderString.
 	{ A B C D E F }
 	{ F B C D E }
 	{ E B C D }
+
+</details>
+
+
+## Week 9 - Binary Search Tree
+
+<details> <summary>Lab Material</summary>
+
+In [**BinarySearchTree**](https://github.com/dtemir/college-courses-CS/blob/master/CSC385/BinarySearchTree)
+we build a *Binary Search Tree* Data Structure.
+We wrote methods like *add*, *remove* (includes several helped methods), and *levelOrderString*.
+
+	public static void main(String[] args) {
+		BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+		
+		bst.add(50);
+		bst.add(25);
+		bst.add(75);
+		bst.add(12);
+		bst.add(30);
+		bst.add(65);
+		bst.add(85);
+		
+		System.out.println("Level Order Traversal of the inital BST");
+		System.out.println(bst);
+		System.out.println();
+		
+		System.out.println("Current size is " + bst.getSize());
+		bst.add(25);
+		System.out.println("After adding 25 again, the size is same " + bst.getSize());
+		System.out.println();
+		
+		bst.remove(50);
+		System.out.println("BST after removing node with key 50");
+		System.out.println(bst);
+	}
+
+
+	Level Order Traversal of the inital BST
+	{ 50 25 75 12 30 65 85 }
+
+	Current size is 7
+	After adding 25 again, the size is same 7
+
+	BST after removing node with key 50
+	{ 65 25 75 12 30 85 }
 
 </details>
