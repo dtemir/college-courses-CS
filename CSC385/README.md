@@ -253,12 +253,13 @@ To remove all elements of one list from the current list, we must consider three
 
 </details>
 
-<details> <summary>Lab Material</summary>
+### Week 7 Lab
 
 In [**List**](https://github.com/dtemir/college-courses-CS/blob/master/CSC385/List)
 we built a *Doubly Linked List* Data Structure. 
 We wrote methods like *insert*, *remove*, *set*, *etc.*
 
+<details> <summary>Lab Material</summary>
     public static void main(String[] args) {
 
 		DoublyLinkedList<Integer> dll = new DoublyLinkedList<Integer>();
@@ -297,11 +298,13 @@ We wrote methods like *insert*, *remove*, *set*, *etc.*
 
 ## Week 8 - Binary Trees
 
-<details> <summary>Lab Material</summary>
+### Week 8 Lab
 
 In [**BinaryTree**](https://github.com/dtemir/college-courses-CS/blob/master/CSC385/BinaryTree)
 we built a *Binary Tree* Data Structure.
 We wrote methods like *add*, *remove*, *levelOrderString*, and *postOrderString*.
+
+<details> <summary>Lab Material</summary>
 
 	public static void main(String[] args) {
 		
@@ -338,15 +341,22 @@ We wrote methods like *add*, *remove*, *levelOrderString*, and *postOrderString*
 
 ## Week 9 - Binary Search Tree
 
-<details> <summary>Lab Material</summary>
+### Week 9 Lab
 
 In [**BinarySearchTree**](https://github.com/dtemir/college-courses-CS/blob/master/CSC385/BinarySearchTree)
 we build a *Binary Search Tree* Data Structure.
 We wrote methods like *add*, *remove* (includes several helped methods), and *levelOrderString*.
 
+We then modified the BST to serve as an AVL tree that balances its nodes to keep the access time of O(logN).
+The methods implemented to convert the BST into AVL is include *rebalance*, *fixHeight*, *rightRotation*, *leftRotation*, and others.
+By converting the tree into the AVL tree, we maintain it balanced throughout.
+
+<details> <summary>Lab Material</summary>
+
 	public static void main(String[] args) {
-		BinarySearchTree<Integer> bst = new BinarySearchTree<>();
 		
+		System.out.println("Testing general Binary Search Tree");
+		BinarySearchTree<Integer> bst = new BinarySearchTree<>();
 		bst.add(50);
 		bst.add(25);
 		bst.add(75);
@@ -354,29 +364,60 @@ We wrote methods like *add*, *remove* (includes several helped methods), and *le
 		bst.add(30);
 		bst.add(65);
 		bst.add(85);
-		
-		System.out.println("Level Order Traversal of the inital BST");
+		bst.add(2);
+		System.out.println("Height of the BST: " + bst.getHeight());
+		System.out.println("Level Order Traversal of the BST");
 		System.out.println(bst);
-		System.out.println();
+		System.out.println("---------");
 		
 		System.out.println("Current size is " + bst.getSize());
 		bst.add(25);
 		System.out.println("After adding 25 again, the size is same " + bst.getSize());
-		System.out.println();
-		
 		bst.remove(50);
-		System.out.println("BST after removing node with key 50");
+		System.out.println("After removing 50, the BST is");
 		System.out.println(bst);
-	}
+		System.out.println("---------");
+		
+		System.out.println("Testing AVL Tree");
+		BinarySearchTree<Integer> bst2 = new BinarySearchTree<>();
+		for (int i = 1; i <= 1024; i++) {
+			bst2.add(i);
+		}
+		System.out.println("Height of the tree: " + bst2.getHeight());
+		System.out.println("Level Order Traversal of the AVL Tree");
+		System.out.println(bst2);
+		System.out.println("---------");
+		
+		System.out.println("After removing 4, 5, and 6");
+		bst2.remove(4);
+		bst2.remove(5);
+		bst2.remove(6);
+		System.out.println("Height of the tree: " + bst2.getHeight());
+		System.out.println("Level Order Traversal of the AVL Tree");
+		System.out.println(bst2);
+		System.out.println();
+	
+	}	
 
 
-	Level Order Traversal of the inital BST
-	{ 50 25 75 12 30 65 85 }
-
-	Current size is 7
-	After adding 25 again, the size is same 7
-
-	BST after removing node with key 50
-	{ 65 25 75 12 30 85 }
+	Testing general Binary Search Tree
+	Height of the BST: 3
+	Level Order Traversal of the BST
+	{ (50 | 25 | 75 )  (25 | 12 | 30 )  (75 | 65 | 85 )  (12 | 2 |  )  (30 |  |  )  (65 |  |  )  (85 |  |  )  (2 |  |  )  }
+	---------
+	Current size is 8
+	After adding 25 again, the size is same 8
+	After removing 50, the BST is
+	{ (65 | 25 | 75 )  (25 | 12 | 30 )  (75 |  | 85 )  (12 | 2 |  )  (30 |  |  )  (85 |  |  )  (2 |  |  )  }
+	---------
+	Testing AVL Tree
+	Height of the tree: 10
+	Level Order Traversal of the AVL Tree
+	{ (512 | 256 | 768 )  (256 | 128 | 384 )  (768 | 640 | 896 )  (128 | 64 | 192 )  (384 | 320 | 448 )...
+	---------
+	After removing 4, 5, and 6
+	Height of the tree: 10
+	Level Order Traversal of the AVL Tree
+	{ (512 | 256 | 768 )  (256 | 128 | 384 )  (768 | 640 | 896 )  (128 | 64 | 192 )  (384 | 320 | 448 )...
 
 </details>
