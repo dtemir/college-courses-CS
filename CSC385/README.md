@@ -296,7 +296,9 @@ We wrote methods like *insert*, *remove*, *set*, *etc.*
 
 </details>
 
-## Week 8 - Binary Trees
+## Week 8 - Binary Trees - [IntegerSet](https://github.com/dtemir/college-courses-CS/tree/master/CSC385/IntegerSet)
+
+In 
 
 ### Week 8 Lab
 
@@ -344,7 +346,7 @@ We wrote methods like *add*, *remove*, *levelOrderString*, and *postOrderString*
 ### Week 9 Lab
 
 In [**BinarySearchTree**](https://github.com/dtemir/college-courses-CS/blob/master/CSC385/BinarySearchTree)
-we build a *Binary Search Tree* Data Structure.
+we built a *Binary Search Tree* Data Structure.
 We wrote methods like *add*, *remove* (includes several helped methods), and *levelOrderString*.
 
 We then modified the BST to serve as an AVL tree that balances its nodes to keep the access time of O(logN).
