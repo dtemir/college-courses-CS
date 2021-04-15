@@ -296,9 +296,7 @@ We wrote methods like *insert*, *remove*, *set*, *etc.*
 
 </details>
 
-## Week 8 - Binary Trees - [IntegerSet](https://github.com/dtemir/college-courses-CS/tree/master/CSC385/IntegerSet)
-
-In 
+## Week 8 - Binary Trees
 
 ### Week 8 Lab
 
@@ -341,7 +339,61 @@ We wrote methods like *add*, *remove*, *levelOrderString*, and *postOrderString*
 </details>
 
 
-## Week 9 - Binary Search Tree
+## Week 9 - Binary Search Tree - [IntegerSet](https://github.com/dtemir/college-courses-CS/tree/master/CSC385/IntegerSet
+
+**Problem Definition:**
+
+Create a new classes called an IntegerSet and complete the *toString*, *add*, *contains*, *union*, and *intersection* methods.
+
+**Probel Solution:**
+
+For the *toString* method we use level-order traversal with the application of queue. 
+By simply putting elements from left to right in the queue we should get the level-order traversal.
+For the *add* method we use the AVL tree add method to add elements according to their key and then rebalance the tree.
+For the *contains* method we simply find the element using the property of the tree to search for elements in O(logN).
+For the *union* method we simply iterate two trees and add each of their element to a new tree.
+For the *intersection* method we iterate one tree, check if its element is in the other tree, and then add that element to a new tree.
+
+<details> <summary> Testing Code </summary>
+
+	
+
+	Testing Add and Contains Methods
+
+	Added {5, 4, 6, 7} to the IntegerSet
+	The resulting tree: { 5 4 6 7 }
+
+	Added 8 to the IntegerSet
+	The updated IntegerSet: { 5 4 7 6 8 }
+
+	Checking if the IntegerSet contains 23: false
+	-----------
+	Testing IntegerSet constructor with an array {40, 23, 80, 23, 0, 100}
+
+	IntegerSet: { 40 23 80 0 100 }
+	-----------
+	Testing IntegerSet { 5 4 7 6 8 } intersection with another IntegerSet { 6 3 8 10 }
+
+	Their intersection: { 6 8 }
+	-----------
+	Testing IntegerSet { 5 4 7 6 8 } union with with another IntegerSet { 6 3 8 10 }
+
+	Their union: { 5 4 7 3 6 8 10 }
+	-----------
+	Provided tests
+
+	IntegerSet { 3 2 4 1 }
+	Contains 3? true
+	Contains 6? false
+
+	IntegerSet { 3 2 4 1 } intersects with { 6 4 7 3 5 }
+	Intersection: { 3 4 }
+
+	IntegerSet { 2 1 3 } unions with { 3 6 }
+	Union: { 2 1 3 6 }
+
+
+</details>
 
 ### Week 9 Lab
 
@@ -400,7 +452,6 @@ By converting the tree into the AVL tree, we maintain it balanced throughout.
 		System.out.println();
 	
 	}	
-
 
 	Testing general Binary Search Tree
 	Height of the BST: 3
