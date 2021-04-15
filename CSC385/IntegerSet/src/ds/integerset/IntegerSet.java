@@ -290,7 +290,28 @@ public class IntegerSet {
 	}
 
 	public String toString() {
-		return levelOrderString();
+		return inOrderString();
+	}
+	
+	/*
+	 * Prints the BST in in-order traversal
+	 */
+	public String inOrderString() {
+		StringBuffer sb = new StringBuffer();
+		sb.append("{ ");
+		inOrderString(root, sb);
+		sb.append("}");
+		return sb.toString();
+	}
+	
+	private void inOrderString(Node current, StringBuffer sb) {
+		if (current != null) {
+			inOrderString(current.left, sb);
+			sb.append(current.key);
+			sb.append(" ");
+			inOrderString(current.right, sb);
+
+		}
 	}
 
 	/*

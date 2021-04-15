@@ -15,7 +15,7 @@ public class IntegerSetTest {
 		is.add(4);
 		is.add(6);
 		is.add(7);
-		System.out.println("Added {5, 4, 6, 7} to the IntegerSet");
+		System.out.println("Added { 5 4 6 7 } to the IntegerSet");
 		System.out.println("The resulting tree: " + is);
 		System.out.println();
 
@@ -28,7 +28,7 @@ public class IntegerSetTest {
 		System.out.println("-----------");
 
 		// TEST 2 (Array Constructor)
-		System.out.println("Testing IntegerSet constructor with an array {40, 23, 80, 23, 0, 100}");
+		System.out.println("Testing IntegerSet constructor with an array { 40 23 80 23 0 100 }");
 		System.out.println();
 
 		int[] array = { 40, 23, 80, 23, 0, 100 };
@@ -37,7 +37,7 @@ public class IntegerSetTest {
 		System.out.println("-----------");
 
 		// TEST 3 (Intersection)
-		System.out.println("Testing IntegerSet " + is + " intersection with another IntegerSet { 6 3 8 10 }");
+		System.out.println("Testing IntegerSet " + is + " intersection with another IntegerSet { 3 6 8 10 }");
 		System.out.println();
 
 		int[] array2 = { 3, 6, 8, 10 };
@@ -46,7 +46,7 @@ public class IntegerSetTest {
 		System.out.println("-----------");
 
 		// TEST 4 (Union)
-		System.out.println("Testing IntegerSet " + is + " union with with another IntegerSet { 6 3 8 10 }");
+		System.out.println("Testing IntegerSet " + is + " union with with another IntegerSet { 3 6 8 10 }");
 		System.out.println();
 
 		System.out.println("Their union: " + is.union(is3));
