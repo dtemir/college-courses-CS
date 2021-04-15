@@ -432,38 +432,37 @@ For the *intersection* method we iterate one tree, check if its element is in th
 
 	Testing Add and Contains Methods
 
-	Added {5, 4, 6, 7} to the IntegerSet
-	The resulting tree: { 5 4 6 7 }
+	Added { 5 4 6 7 } to the IntegerSet
+	The resulting tree: { 4 5 6 7 }
 
 	Added 8 to the IntegerSet
-	The updated IntegerSet: { 5 4 7 6 8 }
+	The updated IntegerSet: { 4 5 6 7 8 }
 
 	Checking if the IntegerSet contains 23: false
 	-----------
-	Testing IntegerSet constructor with an array {40, 23, 80, 23, 0, 100}
+	Testing IntegerSet constructor with an array { 40 23 80 23 0 100 }
 
-	IntegerSet: { 40 23 80 0 100 }
+	IntegerSet: { 0 23 40 80 100 }
 	-----------
-	Testing IntegerSet { 5 4 7 6 8 } intersection with another IntegerSet { 6 3 8 10 }
+	Testing IntegerSet { 4 5 6 7 8 } intersection with another IntegerSet { 3 6 8 10 }
 
 	Their intersection: { 6 8 }
 	-----------
-	Testing IntegerSet { 5 4 7 6 8 } union with with another IntegerSet { 6 3 8 10 }
+	Testing IntegerSet { 4 5 6 7 8 } union with with another IntegerSet { 3 6 8 10 }
 
-	Their union: { 5 4 7 3 6 8 10 }
+	Their union: { 3 4 5 6 7 8 10 }
 	-----------
 	Provided tests
 
-	IntegerSet { 3 2 4 1 }
+	IntegerSet { 1 2 3 4 }
 	Contains 3? true
 	Contains 6? false
 
-	IntegerSet { 3 2 4 1 } intersects with { 6 4 7 3 5 }
+	IntegerSet { 1 2 3 4 } intersects with { 3 4 5 6 7 }
 	Intersection: { 3 4 }
 
-	IntegerSet { 2 1 3 } unions with { 3 6 }
-	Union: { 2 1 3 6 }
-
+	IntegerSet { 1 2 3 } unions with { 3 6 }
+	Union: { 1 2 3 6 }
 
 </details>
 
@@ -480,49 +479,77 @@ By converting the tree into the AVL tree, we maintain it balanced throughout.
 <details> <summary>Lab Material</summary>
 
 	public static void main(String[] args) {
-		
-		System.out.println("Testing general Binary Search Tree");
-		BinarySearchTree<Integer> bst = new BinarySearchTree<>();
-		bst.add(50);
-		bst.add(25);
-		bst.add(75);
-		bst.add(12);
-		bst.add(30);
-		bst.add(65);
-		bst.add(85);
-		bst.add(2);
-		System.out.println("Height of the BST: " + bst.getHeight());
-		System.out.println("Level Order Traversal of the BST");
-		System.out.println(bst);
-		System.out.println("---------");
-		
-		System.out.println("Current size is " + bst.getSize());
-		bst.add(25);
-		System.out.println("After adding 25 again, the size is same " + bst.getSize());
-		bst.remove(50);
-		System.out.println("After removing 50, the BST is");
-		System.out.println(bst);
-		System.out.println("---------");
-		
-		System.out.println("Testing AVL Tree");
-		BinarySearchTree<Integer> bst2 = new BinarySearchTree<>();
-		for (int i = 1; i <= 1024; i++) {
-			bst2.add(i);
-		}
-		System.out.println("Height of the tree: " + bst2.getHeight());
-		System.out.println("Level Order Traversal of the AVL Tree");
-		System.out.println(bst2);
-		System.out.println("---------");
-		
-		System.out.println("After removing 4, 5, and 6");
-		bst2.remove(4);
-		bst2.remove(5);
-		bst2.remove(6);
-		System.out.println("Height of the tree: " + bst2.getHeight());
-		System.out.println("Level Order Traversal of the AVL Tree");
-		System.out.println(bst2);
+
+		// TEST 1 (Add and Contains)
+		System.out.println("Testing Add and Contains Methods");
 		System.out.println();
-	
+
+		IntegerSet is = new IntegerSet();
+		is.add(5);
+		is.add(4);
+		is.add(6);
+		is.add(7);
+		System.out.println("Added { 5 4 6 7 } to the IntegerSet");
+		System.out.println("The resulting tree: " + is);
+		System.out.println();
+
+		is.add(8);
+		System.out.println("Added 8 to the IntegerSet");
+		System.out.println("The updated IntegerSet: " + is);
+		System.out.println();
+
+		System.out.println("Checking if the IntegerSet contains 23: " + is.contains(23));
+		System.out.println("-----------");
+
+		// TEST 2 (Array Constructor)
+		System.out.println("Testing IntegerSet constructor with an array { 40 23 80 23 0 100 }");
+		System.out.println();
+
+		int[] array = { 40, 23, 80, 23, 0, 100 };
+		IntegerSet is2 = new IntegerSet(array);
+		System.out.println("IntegerSet: " + is2);
+		System.out.println("-----------");
+
+		// TEST 3 (Intersection)
+		System.out.println("Testing IntegerSet " + is + " intersection with another IntegerSet { 3 6 8 10 }");
+		System.out.println();
+
+		int[] array2 = { 3, 6, 8, 10 };
+		IntegerSet is3 = new IntegerSet(array2);
+		System.out.println("Their intersection: " + is.intersection(is3));
+		System.out.println("-----------");
+
+		// TEST 4 (Union)
+		System.out.println("Testing IntegerSet " + is + " union with with another IntegerSet { 3 6 8 10 }");
+		System.out.println();
+
+		System.out.println("Their union: " + is.union(is3));
+		System.out.println("-----------");
+
+		// TEST 5 (Provided tests)
+		System.out.println("Provided tests");
+		System.out.println();
+
+		int[] array3 = { 2, 3, 4, 1 };
+		IntegerSet iS1 = new IntegerSet(array3);
+		System.out.println("IntegerSet " + iS1);
+		System.out.println("Contains 3? " + iS1.contains(3)); // returns true
+		System.out.println("Contains 6? " + iS1.contains(6)); // returns false
+		System.out.println();
+
+		int[] array4 = { 5, 7, 6, 3, 4 };
+		IntegerSet iS2 = new IntegerSet(array4);
+		System.out.println("IntegerSet " + iS1 + " intersects with " + iS2);
+		System.out.println("Intersection: " + iS1.intersection(iS2));
+		System.out.println();
+
+		int[] array5 = { 2, 1, 3 };
+		int[] array6 = { 3, 6 };
+		IntegerSet iS3 = new IntegerSet(array5);
+		IntegerSet iS4 = new IntegerSet(array6);
+		System.out.println("IntegerSet " + iS3 + " unions with " + iS4);
+		System.out.println("Union: " + iS3.union(iS4));
+
 	}	
 
 	Testing general Binary Search Tree
