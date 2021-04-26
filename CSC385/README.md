@@ -573,3 +573,113 @@ By converting the tree into the AVL tree, we maintain it balanced throughout.
 	{ (512 | 256 | 768 )  (256 | 128 | 384 )  (768 | 640 | 896 )  (128 | 64 | 192 )  (384 | 320 | 448 )...
 
 </details>
+
+## Week 12 - Hash Types - [Hashing](https://github.com/dtemir/college-courses-CS/tree/master/CSC385/Hashing)
+
+**Problem Definition:**
+
+Given a collection of lists, use a HashSet to find the elements that are common in all lists, for simplicity let us assume that the lists have distinct items.
+
+For example, consider the following collection of lists of integers:
+
+	A1 = [3, 4, 9, 8, 12, 15, 7, 13]
+	A2 = [15, 24, 50, 12, 3, 9]
+	A3 = [78, 65, 24, 13, 9, 3, 12]
+	A4 = [ 15, 78, 14, 3, 2, 9, 44, 12]
+
+Then the common elements in this collection would be: **[3, 9, 12]**
+
+**Problem Solution:**
+
+Using Java's HashSet class.
+
+We achieve the **O(kn)** complexity, where k is the number of lists and n is the maximum number of elements, by **using two HashSets** that store repeated values.
+
+1. First, we put all elements of the very first list in **set A**. 
+2. Then, we iterate through the rest of the lists. 
+3. Each time we shift to a new list, we create a new **set B**. 
+4. When going through the elements of that list, we see if each element is **contained in the set A**. 
+5. If it is contained in the set A, we **add it to the set B**.
+6. After each list, we **update set A** to point to set B. 
+7. This way we make sure to **sift through the elements**, making sure that each element in the initial set can be encountered in the following lists.
+8. Finally, we **copy down the elements from set A** to an ArrayList and return it.
+
+<details> <summary>Testing Code</summary>
+
+	public static void main(String args[]) {
+	    	// Test 1: Integer Lists
+	        List<List<Integer>> intLists = new LinkedList<>();
+
+	        intLists.add(new ArrayList<Integer>(Arrays.asList(3, 4, 9, 8, 12, 15, 7, 13)));
+	        intLists.add(new ArrayList<Integer>(Arrays.asList(15, 24, 50, 12, 3, 9)));
+	        intLists.add(new ArrayList<Integer>(Arrays.asList(78, 65, 24, 13, 9, 3, 12)));
+	        intLists.add(new ArrayList<Integer>(Arrays.asList(15, 78, 14, 3, 2, 9, 44, 12)));
+
+	        List<Integer> intResult = findCommonElements(intLists);
+
+	        System.out.println("Common elements of the integer list");
+	        System.out.println(intResult + "\n");
+
+	        // Test 2: String Lists
+	        List<List<String>> stringLists = new LinkedList<>();
+
+	        stringLists.add(new ArrayList<String>(Arrays.asList("a", "b", "d", "c", "h", "e")));
+	        stringLists.add(new ArrayList<String>(Arrays.asList("g", "b", "e", "j", "u", "z", "h", "d")));
+	        stringLists.add(new ArrayList<String>(Arrays.asList("y", "p", "b", "d")));
+
+	        List<String> stringResult = findCommonElements(stringLists);
+
+	        System.out.println("Common elements of the string list");
+	        System.out.println(stringResult + "\n");
+	        
+	        // Test 3: One Integer List
+	        List<List<Integer>> singleList = new LinkedList<>();
+	        
+	        singleList.add(new ArrayList<Integer>(Arrays.asList(3, 4, 9, 8, 12, 15, 7, 13)));
+	        
+	        List<Integer> singleResult = findCommonElements(singleList);
+	        
+	        System.out.println("Common elements of the single list");
+	        System.out.println(singleResult + "\n");
+	        
+	        // Test 4: No Common Elements
+	        List<List<Integer>> noCommonsList = new LinkedList<>();
+
+	        noCommonsList.add(new ArrayList<Integer>(Arrays.asList(4, 8, 15, 7, 13)));
+	        noCommonsList.add(new ArrayList<Integer>(Arrays.asList(15, 24, 50, 12, 3, 9)));
+	        noCommonsList.add(new ArrayList<Integer>(Arrays.asList(78, 65, 24, 13, 9, 3, 12)));
+	        noCommonsList.add(new ArrayList<Integer>(Arrays.asList(15, 78, 14, 3, 2, 9, 44, 12)));
+
+	        List<Integer> noCommonsResult = findCommonElements(noCommonsList);
+
+	        System.out.println("No common elements in the integer list");
+	        System.out.println(noCommonsResult + "\n");
+	        
+	        // Test 5: Empty Collection
+	        
+	        List<List<Integer>> emptyList = new LinkedList<>();
+	        
+	        List<Integer> emptyResult = findCommonElements(emptyList);
+	        
+	        System.out.println("Empty collection");
+	        System.out.println(emptyResult + "\n");
+	        
+	}
+
+	
+	Common elements of the integer list
+	[3, 9, 12]
+
+	Common elements of the string list
+	[b, d]
+
+	Common elements of the single list
+	[3, 4, 7, 8, 9, 12, 13, 15]
+
+	No common elements in the integer list
+	[]
+
+	Empty collection
+	[]
+
+</details>
