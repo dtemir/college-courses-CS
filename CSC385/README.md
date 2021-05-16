@@ -1,9 +1,5 @@
 # CSC 385
 
-- [Week 5 - Sorting Assignment](#week-5---sorting-assignment---difference-pairs)
-- [Week 6 - Stack Assignment](#week-6---stack-assignment---maze-solving)
-- [Week 7 - Sorted List Assignment](#week-7---sorted-list-assignment---sorted-list)
-
 ## Week 5 - Sorting Assignment - [Difference Pairs](https://github.com/dtemir/college-courses-CS/tree/master/CSC385/DifferencePairs)
 
 **Problem Definition:**
@@ -681,5 +677,72 @@ We achieve the **O(kn)** complexity, where k is the number of lists and n is the
 
 	Empty collection
 	[]
+
+</details>
+
+## Final Assignment - Getting Reverse Crown of BST - [https://github.com/dtemir/college-courses-CS/tree/master/CSC385/Final]
+
+**Problem Definiton:**
+
+The crown of a node is all the leaf nodes that fall under that given node.
+Given an AVLTree, write a method that returns a list of the crown of a given element in descending sorted order (reverse crown of the element).
+
+Suppose the following elements are added to the tree from left to right.
+
+	[25, 30, 50, 65, 75, 80, 85]
+	The crown of 65 is [25, 50, 75, 85]
+	The reverse crown of 65 is just [85, 75, 50, 25].
+
+**Problem Solution:**
+
+We should just use a recursive approach to find nodes in the tree that do not have children on the left and right.
+
+<details> <summary> Code Solution </summary>
+
+	public List<T> getReverseCrown(T data) {		
+		Node topNode = searchForNode(root, data);		
+		
+		List<T> listToReturn = new LinkedList<>(); // initialize the list to pass by reference		
+		getReverseCrown(topNode, listToReturn); // call the solution and pass the list
+		
+		return listToReturn;
+	}
+
+	/*
+	 * Adds all the leaves of a given node to the passed by reference list 
+	 */
+	private void getReverseCrown (Node current, List<T> listToReturn) {
+		if (current.left == null && current.right == null) { // leaf case: add it to the list
+			listToReturn.add(current.data);
+		}
+		
+		// ESSENTIAL: right must come first and left come second to get reverse list
+		if (current.right != null) { // check right sub-tree
+			getReverseCrown(current.right, listToReturn);
+		}
+		
+		if (current.left != null) { // check left sub-tree
+			getReverseCrown(current.left, listToReturn);
+		}
+	}
+	
+	/*
+	 * Looks for the node that carries the given data in getReverseCrown
+	 */
+	private Node searchForNode(Node current, T data) {		
+		if (current == null) { // couldn't find a node with the data
+			throw new NoSuchElementException("No such node in the tree");
+		}
+		
+		int res = current.data.compareTo(data);
+		if (res == 0) { // found a node with the data
+			return current;
+		}
+		if (res < 0) { // check left sub-tree
+			return searchForNode(current.right, data);
+		}
+		
+		return searchForNode(current.left, data); // check right sub-tree		
+	}
 
 </details>
