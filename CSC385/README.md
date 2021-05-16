@@ -680,7 +680,7 @@ We achieve the **O(kn)** complexity, where k is the number of lists and n is the
 
 </details>
 
-## Final Assignment - Getting Reverse Crown of BST - [https://github.com/dtemir/college-courses-CS/tree/master/CSC385/Final]
+## Final Assignment - Getting Reverse Crown of BST - [Final](https://github.com/dtemir/college-courses-CS/tree/master/CSC385/Final)
 
 **Problem Definiton:**
 
