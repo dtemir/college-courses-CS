@@ -1,0 +1,15 @@
+Damir Temir
+CSC 470: Intro to Neural Nets
+Assignment #2: Using a Multilayer Perceptron to Predict Diabetes
+
+# Script 1 Results
+* There are 2 hidden layers (one with 32 neurons and one 16, both using relu activation). There is one output layer with a sigmoid activation. The network uses Adam Optimizer and Binary Cross-Entropy loss function) 
+* The original solution provided in the worksheet achieves around 91.85% accuracy with the Training Dataset and 74.03% with the Testing Dataset.
+* The confusion matrix shows around 85 cases with True Positive, 22 with True Negative, 18 with False Positive, and 29 with False Negative. This means that out of all testing cases, 114 were right and 40 were wrong.
+* The ROC curve shows a good result with a higher true positive rate than false positive, which means there are more accurate predictioins than inaccurate ones.
+
+# Script 2 Results
+1. Replacing the 2 hidden layer with 32 neurons instead of 16 leads to a higher training accuracy (93.28%) but lower testing accuracy (67.53%). The number of true positive and false negatives also diminished to 104 instead of previous 114. Probably cause: overfitting on training data, but since testing data is so small, it's accuracy decreased.
+2. Adding one more hidden layer with 16 nodes and relu activation function results in an even greater overfitting of around 98.98% training accuracy and 69.48% testing accuracy.
+3. Combining the first two decisions, there are three layers (same first, 32 nodes on second, and 16 nodes on third) that get us 100% training accuracy and 72.08% testing accuracy. Since this approach perfectly trains on all available data, the testing accuracy increased to 72.08%. This is most definitely overfitting.
+4. Sidenote: with only one hidden layer of 32 nodes, the accuracy on training data decresed to 85% but the testing accuracy increased to 76%, which shows that the MLP could work with one hidden layer.
