@@ -63,7 +63,7 @@ The dataset had to be pre-processed and explored with graphs. You can find the f
 
 ## Findings
 
-# Script 1 Results
+### Script 1 Results
 * There are 2 hidden layers (one with 32 neurons and one 16, both using relu activation). There is one output layer with a sigmoid activation. The network uses Adam Optimizer and Binary Cross-Entropy loss function) 
 * The original solution provided in the worksheet achieves around 91.85% accuracy with the Training Dataset and 74.03% with the Testing Dataset.
 * The confusion matrix shows around 85 cases with True Positive, 22 with True Negative, 18 with False Positive, and 29 with False Negative. This means that out of all testing cases, 114 were right and 40 were wrong.
@@ -71,20 +71,18 @@ The dataset had to be pre-processed and explored with graphs. You can find the f
 
 ![Confusion Matrix](predict-diabetes/Figure_1.png)
 
-![ROC Curve](predict_diabetes/Figure_2.png)
+![ROC Curve](predict-diabetes/Figure_2.png)
 
-# Script 2 Results
+### Script 2 Results
 1. Replacing the 2 hidden layer with 32 neurons instead of 16 leads to a higher training accuracy (93.28%) but lower testing accuracy (67.53%). The number of true positive and false negatives also diminished to 104 instead of previous 114. Probably cause: overfitting on training data, but since testing data is so small, it's accuracy decreased.
 2. Adding one more hidden layer with 16 nodes and relu activation function results in an even greater overfitting of around 98.98% training accuracy and 69.48% testing accuracy.
 3. Combining the first two decisions, there are three layers (same first, 32 nodes on second, and 16 nodes on third) that get us 100% training accuracy and 72.08% testing accuracy. Since this approach perfectly trains on all available data, the testing accuracy increased to 72.08%. This is most definitely overfitting.
 4. Sidenote: with only one hidden layer of 32 nodes, the accuracy on training data decresed to 85% but the testing accuracy increased to 76%, which shows that the MLP could work with one hidden layer.
 
-Important: On Page 23, under the point 3(b), you talk about the `compile()` function, but provide a link to the `fit()` function in Keras. Since we have reserved a validation set, I'll use it in `fit()` and also add something for the `compile()`.
-
-# Script 3 Results
+### Script 3 Results
 * As we reserved 20% of the train data as validation set, I updated the `fit()` function to use the set. The accuracy achieved was 95.72% with training data and 68.18% with testing data. There were 105 proper predictions and 49 wrong ones. The validation set seems to have overfit the model as it is used to update loss at the end of each epoch, which I think is a powerful move.
 * Having kept the validation set, I also updated the `compile()` function with a different metric called `mse` or Mean Squared Error that is meant to show the distance between the right answer and the arrived answered by taking squares of those errors that will be then computed to a mean. This way, the smaller errors affect the metric less than big errors. WIth the change,the accuracy is 90% on the training set and 73% on the testing set.
 
-# Script 4 Results
+### Script 4 Results
 * I first replaced the Adam optimizer with Adamax, which is "a variant of Adam based on the infitinity norm." It says that it is sometimes superious to Adam. But I was only able to achieve 82% training accuracy and 78% testing accuracy, which is an imporvement with testing but lower for training accuracy.
 * The algorithm got 120 correct predictions on the test and only 34 incorrect, which is a better result compared to Adam. The ROC curve also seems to have more true positives than false positives.
