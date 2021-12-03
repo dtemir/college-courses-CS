@@ -1,0 +1,83 @@
+running the original `dogs_vs_cats_CNN.py`
+  * resulted in around 0.8602 training accuracy and 0.8000 testing accuracy
+  * it didn't take too much time (one epoch would take around 40s)
+
+```bash
+$ python3 dogs_vs_cats_CNN.py
+...
+Epoch 10/10
+1250/1250 [==============================] - 41s 33ms/step - loss: 0.3476 - accuracy: 0.8459
+Found 5000 images belonging to 2 classes.
+Testing the CNN...
+RESULTS:
+loss: 0.4515720307826996
+accuracy: 0.7975000143051147
+```
+
+a. increasing the `INPUT_SIZE` from 32 to 64 to reduce the amount of compression for images, and test performance
+  * running `dogs_vs_cats_CNN_2.py` took more time than with the `INPUT_SIZE` set to 32 (because higher compressino means better performance)
+  * resulted in around 0.9278 training accuracy and 0.8000 testing accuracy
+  * testing accuracy is the same as the original script, which means that even with high compression, the original script converges just as well
+
+```bash
+$ python3 dogs_vs_cats_CNN_a.py
+...
+Epoch 10/10
+1250/1250 [==============================] - 55s 44ms/step - loss: 0.1817 - accuracy: 0.9278
+Found 5000 images belonging to 2 classes.
+Testing the CNN...
+RESULTS:
+loss: 0.6045041084289551
+accuracy: 0.800000011920929
+```
+
+b. adding a convolutional layer and a max pooling subsampling layer before the flatten layer to the original script
+  * took just as much time as the original script (one epoch would take around 39s)
+  * resulted in around 0.8594 training accuracy and 0.7906 testing accuracy
+  * the results are very similar to the original script, which shows that we don't need 3 convolutional layers to extract neccesary features
+
+```bash
+$ python3 dogs_vs_cats_CNN_b.py
+...
+Epoch 10/10
+1250/1250 [==============================] - 39s 31ms/step - loss: 0.3228 - accuracy: 0.8594
+Found 5000 images belonging to 2 classes.
+Testing the CNN...
+RESULTS:
+loss: 0.46209603548049927
+accuracy: 0.7906249761581421
+```
+
+c. decreasing the number of filters to 24 using the original script
+  * took a similar amount of time per epoch (one epoch would take around 38s)
+  * the results are pretty similar as well, with 0.8385 on training and 0.7900 on testing
+  * shows that we can use fewer filters to get the same results
+
+```bash
+$ python3 dogs_vs_cats_CNN_c.py
+...
+Epoch 10/10
+1250/1250 [==============================] - 38s 31ms/step - loss: 0.3599 - accuracy: 0.8385
+Found 5000 images belonging to 2 classes.
+Testing the CNN...
+RESULTS:
+loss: 0.4422925114631653
+accuracy: 0.7900000214576721
+```
+
+d. replacing the max pooling subsampling layers with average pooling layers
+   * took a little bit more time per epoch (one epoch would take around 42s)
+   * the results are similar to the original script, with 0.8287 training accuracy and 0.8056 testing accuracy
+   * average pooling layers are needed when there is a range of very large values, in which case max pooling will get skewed
+
+```bash
+$ python3 dogs_vs_cats_CNN_d.py
+...
+Epoch 10/10
+1250/1250 [==============================] - 42s 33ms/step - loss: 0.3797 - accuracy: 0.8287
+Found 5000 images belonging to 2 classes.
+Testing the CNN...
+RESULTS:
+loss: 0.42635613679885864
+accuracy: 0.8056250214576721
+```
