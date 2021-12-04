@@ -1,0 +1,123 @@
+Note: I'm using `sys.argv[1]` to read in the arguments when running the scripts
+
+1. Having run `lstm_large.py` and then used the last epoch 50 with loss of 0.1163, 
+I achieved the following result with `lstm_large_generate_text.py`
+
+```bash
+$ python3 lstm_large_generate_text.py cat-in-the-hat/weights-improvement-50-0.1163-bigger.hdf5
+Total Characters:  7353
+Total Vocab:  32
+Total Patterns:  7253
+Seed:
+" t went on there that day?
+
+should we tell her about it?
+now, what should we do?
+well...
+what would y "
+ou do
+if your mother asked you?
+they will gome!'
+said the cat in the hat.
+'i always pick up all my playthings
+and so...
+i will show you another good game that i know!'
+
+and then he ran out.
+and, then, fast as a fox,
+the cat in the hat
+came back in with a box.
+a big red wood box.
+it was shut with a hook.
+'now look at this trick,'
+said the cat in the hat.
+'i always pick up all my playthings
+and so...
+i will show you another good game that i know!'
+
+and then he ran out.
+and, then, fast as a fox,
+the cat in the hat
+came back in with a box.
+a big red wood box.
+it was shut with a hook.
+'now look at this trick,'
+said the cat in the hat.
+'i always pick up all my playthings
+and so...
+i will show you another good game that i know!'
+
+and then he ran out.
+and, then, fast as a fox,
+the cat in the hat
+came back in with a box.
+a big red wood box.
+it was shut with a hook.
+'now look at this trick,'
+said the cat in the hat.
+'i always pick up all my playthings
+and so...
+i will show you another good game 
+Done.
+```
+
+2. Decreasing the size of the sliding window `seq_length` with a value of 25 instead of a 100
+
+The algorithm spent less time training because there is less information used to make predictions,
+therefore lowering the complexity.
+
+However, the smaller sliding window resulted in a poor performance predicting words. 
+
+```bash
+$ python3 lstm_large_generate_text.py sliding-window-25/Cat_in_the_Hat.txt sliding-window-25/weights-improvement-49-0.1291-bigger.hdf5 
+Total Characters:  7353
+Total Vocab:  32
+Total Patterns:  7253
+Seed:
+"  not a good game,'
+said our fish as he lit.
+'no, i do not like it,
+not one little bit!'
+
+'now look w "
+hat you did!'
+shen se saw in the hat!
+aut our fish said, 'now  the cat in the hat!
+and the cat in the hat!
+and the cat in the hat!
+and the milk and thi cat in the hat!
+and the cat in the hat!
+and the cat in the hat!
+and the milk, and the fish in the house?
+why, the cat.
+'now look at this tricks '
+said the cat in the hat!
+and the cat in the hat!
+and the milk, and the fish in a hish!'
+said the fish in the hat!
+and he gell on the cake!
+and the cat, and the cat in the hat!
+and the cat in the hat!
+and the silk, and the fish in the house
+for the day.
+
+but our fish said, 'now  look! thth my nat
+in the hat!
+and the cat in the hat!
+and the cat in the hat!
+and the milk, and the fish in the house?
+why, the cat.
+'now look at this tricks '
+said the cat in the hat!
+and the cat in the hat!
+and the milk, and the fish in a hish!'
+said the fish in the hat!
+and he gell on the cake!
+and the cat, and the cat in the hat!
+and the cat in the hat!
+and the silk, and the fish in the house
+for the day.
+
+but our f
+Done.
+```
